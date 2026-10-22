@@ -5,7 +5,10 @@ A static, 7‑slide web presentation (HTML + CSS + vanilla JS). No build step, n
 ```
 index.html      slides
 css/style.css   styles
-js/app.js       navigation, romaji toggle, fullscreen
+js/app.js       navigation, fullscreen
+guide.html      Presentation Guide (script + romaji + thumbnails), opens on its own
+js/script-data.js  the spoken script — the single source for the guide
+css/guide.css, js/guide.js  guide layout and rendering
 images/         photos (Wikimedia Commons) + credits.json
 ```
 
@@ -16,10 +19,20 @@ images/         photos (Wikimedia Commons) + credits.json
 | Next | → · Space · Page Down · Next button · swipe left |
 | Previous | ← · Page Up · Previous button · swipe right |
 | First / last | Home / End |
-| Romaji on/off | **R** or the ローマ字 button (hidden by default) |
+| Presentation Guide | **G** or the “Presentation Guide” button (opens in a new tab) |
 | Full screen | **F** or the corner button |
 
 Direct links work: `https://your-site/#4` opens slide 4. Controls fade out after 3.5 s of inactivity; move the mouse to bring them back.
+
+## Presentation Guide (for your iPad)
+
+`guide.html` shows the full Japanese script with romaji, grouped by section, with a live thumbnail of the matching slide(s). It is a separate page: it never talks to the presentation, so scrolling it cannot change the office screen.
+
+1. Publish the folder (below) → you get a URL such as `https://your-site.vercel.app/`.
+2. **Office computer:** open that URL, press F for full screen.
+3. **iPad:** open `https://your-site.vercel.app/guide.html` in Safari (Share → Add to Home Screen for a one-tap shortcut). Use the top chips to jump between sections and A− / A+ to resize the text.
+
+Editing the script: change `js/script-data.js` only (each line keeps its Japanese and romaji together). Script sections map to deck slides: Opening → 1, Slide 1 → 2–3, Slide 2 → 4, Slide 3 → 5–6, Conclusion → 7.
 
 ## Run locally
 
